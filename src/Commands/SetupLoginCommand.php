@@ -3,6 +3,8 @@
 namespace Devinci\LaravelEssentials\Commands;
 use Devinci\LaravelEssentials\LoginCoreServiceProvider;
 use Illuminate\Console\Command;
+use Illuminate\Container\Container;
+
 
 class SetupLoginCommand extends Command
 {

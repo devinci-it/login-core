@@ -14,6 +14,8 @@ use Devinci\LaravelEssentials\Requests\RegistrationRequest;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Container\Container;
+
 
 class LoginCoreServiceProvider extends ServiceProvider
 {
@@ -24,11 +26,11 @@ class LoginCoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(LoginCoreServiceProvider::class, function (Application $app) {
+        $this->app->singleton(LoginCoreServiceProvider::class, function ($app) {
             return new LoginCoreServiceProvider($app);
         });
-
     }
+
 
     /**
      * Display initialization instructions.
