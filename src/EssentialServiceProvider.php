@@ -11,6 +11,7 @@ use Devinci\LaravelEssentials\Repositories\BaseRepository;
 use Devinci\LaravelEssentials\Repositories\UserRepository;
 use Devinci\LaravelEssentials\Requests\LoginRequest;
 use Devinci\LaravelEssentials\Requests\RegistrationRequest;
+
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
@@ -37,8 +38,8 @@ class EssentialServiceProvider extends ServiceProvider
     protected function displayInitializationInstructions()
     {
         if ($this->app->runningInConsole()) {
-            $this->line("\nTo initialize the login setup, run the following command:");
-            $this->line("php artisan login:setup\n");
+            echo "\nTo initialize the login setup, run the following command:";
+            echo "\nphp artisan login:setup\n";
         }
     }
 
@@ -49,8 +50,8 @@ class EssentialServiceProvider extends ServiceProvider
      */
     protected function displaySupportAndContributeInfo()
     {
-        $this->line("\nFor support or to contribute, visit:");
-        $this->line("https://github.com/devinci-it/login-core\n");
+        echo "\nFor support or to contribute, visit:";
+        echo "\nhttps://github.com/devinci-it/login-core\n";
     }
 
 
