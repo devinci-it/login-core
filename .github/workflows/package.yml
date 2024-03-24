@@ -1,0 +1,56 @@
+name: Update Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          tools: jq
+
+      - name: Bump version and push changes
+        run: |
+          # Function to parse the version from JSON
+          parse_version() {
+              local version=$(jq -r '.version' composer.json)
+              echo "${version#v}"  # Remove 'v' prefix if present
+          }
+
+          # Function to update composer.json with the new version
+          update_composer() {
+              local new_version=$1
+              jq ".version = \"v$new_version\"" composer.json > composer.tmp && mv composer.tmp composer.json
+          }
+
+          # Parse version from JSON
+          current_version=$(parse_version)
+
+          # Increment version (e.g., v1.0.0-dev -> v1.0.1-dev)
+          new_version=$(echo $current_version | awk -F'-' '{split($1, a, "."); print a[1]"."a[2]"."a[3]+1"-dev"}')
+
+          # Update composer.json with the new version
+          update_composer "$new_version"
+
+          # Commit the changes
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git add composer.json
+          git commit -m "Bump version to $new_version"
+          git push origin main
+
+      - name: Create and push tag
+        run: |
+          current_version=$(parse_version)
+          git tag -a "v$current_version" -m "Version $current_version"
+          git push origin "v$current_version"
