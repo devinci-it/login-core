@@ -1,26 +1,27 @@
 {
-    "name": "devinci/laravel-essentials",
-    "type": "library",
-    "require": {
-        "laravel/framework": "^11.0"
-    },
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Devinci\\LaravelEssentials\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "devinci-it"
-        }
-    ],
-    "minimum-stability": "dev",
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Devinci\\LaravelEssentials\\EssentialServiceProvider"
-            ]
-        }
+  "name": "devinci-it/login-core",
+  "type": "library",
+  "version": "v1.0.1-dev",
+  "require": {
+    "laravel/framework": "^11.0"
+  },
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Devinci\\LaravelEssentials\\": "src/"
     }
+  },
+  "authors": [
+    {
+      "name": "devinci-it"
+    }
+  ],
+  "minimum-stability": "dev",
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Devinci\\LaravelEssentials\\EssentialServiceProvider"
+      ]
+    }
+  }
 }
