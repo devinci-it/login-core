@@ -3,7 +3,8 @@
   "type": "library",
   "version": "v1.0.4-dev",
   "require": {
-    "laravel/framework": "^11.0"
+    "laravel/framework": "^11.0",
+    "mockery/mockery": "2.0.x-dev"
   },
   "license": "MIT",
   "autoload": {
@@ -23,5 +24,10 @@
         "Devinci\\LaravelEssentials\\EssentialServiceProvider"
       ]
     }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.1@dev",
+    "phpstan/phpstan": "2.0.x-dev",
+    "maglnet/composer-require-checker": "dev-renovate/nikic-php-parser-5.x"
   }
 }
