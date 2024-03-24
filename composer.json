@@ -1,32 +1,34 @@
 {
-  "name": "devinci-it/login-core",
-  "type": "library",
-  "version": "v1.0.9-dev",
-  "require": {
-    "laravel/framework": "^11.0"
-  },
-  "license": "MIT",
-  "autoload": {
-    "psr-4": {
-      "Devinci\\LaravelEssentials\\": "src/"
+    "name": "devinci-it/login-core",
+    "type": "library",
+    "description": "Essential features for Laravel applications, including a standard login and registration system.",
+    "keywords": ["laravel", "authentication", "login", "registration"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "devinci-it"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "laravel/framework": "^8.0|^9.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0|^10.0",
+        "phpstan/phpstan": "^0.12|^1.0",
+        "maglnet/composer-require-checker": "^3.3|^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Devinci\\LaravelEssentials\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LoginCoreServiceProvider"
+            ]
+        }
     }
-  },
-  "authors": [
-    {
-      "name": "devinci-it"
-    }
-  ],
-  "minimum-stability": "dev",
-  "extra": {
-    "laravel": {
-      "providers": [
-        "LoginCoreServiceProvider"
-      ]
-    }
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^11.1@dev",
-    "phpstan/phpstan": "2.0.x-dev",
-    "maglnet/composer-require-checker": "dev-renovate/nikic-php-parser-5.x"
-  }
 }
