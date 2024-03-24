@@ -1,7 +1,6 @@
 {
   "name": "devinci-it/login-core",
   "type": "library",
-  "version": "v1.0.3-dev",
   "require": {
     "laravel/framework": "^11.0"
   },
