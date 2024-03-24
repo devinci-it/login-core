@@ -17,6 +17,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Remove composer.json if exists
+      run: rm -f composer.json
+
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
 
@@ -35,5 +38,3 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Run custom script
-      run: scripts/commit_and_tag.sh
