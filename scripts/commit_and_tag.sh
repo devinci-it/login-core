@@ -17,7 +17,7 @@ update_composer() {
 current_version=$(parse_version)
 
 # Increment version (e.g., v1.0.0-dev -> v1.0.1-dev)
-new_version=$(echo $current_version | awk -F'-' '{split($1, a, "."); print a[1]"."a[2]"."a[3]+1"-dev"}')
+new_version=$(echo $current_version | awk -F'-' '{split($1, a, "."); print a[1]"."a[2]"."a[3]+1""}')
 
 # Update composer.json with the new version
 update_composer "$new_version"
