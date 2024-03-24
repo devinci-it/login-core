@@ -13,13 +13,7 @@ update_composer() {
 }
 
 # Main script
-# Add modified files to the staging area
-git add .
-
-# Commit changes with a commit message
-git commit -m "Update package"
-
-# Parse current version from JSON
+# Parse version from JSON
 current_version=$(parse_version)
 
 # Increment version (e.g., v1.0.0-dev -> v1.0.1-dev)
@@ -32,5 +26,9 @@ update_composer "$new_version"
 git add composer.json
 git commit -m "Bump version to $new_version"
 
-# Push changes and tags to the remote repository
-git push origin main --tags
+# Push the changes to the remote repository
+git push origin main
+
+# Create and push the tag
+git tag -a "v$new_version" -m "Version $new_version"
+git push origin "v$new_version"
