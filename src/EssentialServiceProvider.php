@@ -32,25 +32,22 @@ class EssentialServiceProvider extends ServiceProvider
     /**
      * Display initialization instructions.
      *
-     * @return void
+     * @return int
      */
     protected function displayInitializationInstructions()
     {
-        if ($this->app->runningInConsole()) {
-            $this->line("\nTo initialize the login setup, run the following command:");
-            $this->line("php artisan login:setup\n");
-        }
+        return 0;
+
     }
 
     /**
      * Display support and contribution information.
      *
-     * @return void
-     */
+     * @return int
+     * */
     protected function displaySupportAndContributeInfo()
     {
-        $this->line("\nFor support or to contribute, visit:");
-        $this->line("https://github.com/devinci-it/login-core\n");
+        return 0;
     }
 
 
@@ -68,8 +65,8 @@ class EssentialServiceProvider extends ServiceProvider
             ]);
         }
 
-        $this->displayInitializationInstructions();
-        $this->displaySupportAndContributeInfo();
+        #$this->displayInitializationInstructions();
+        #$this->displaySupportAndContributeInfo();
 }
 
     /**
