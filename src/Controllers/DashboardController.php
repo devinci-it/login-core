@@ -49,7 +49,7 @@ class DashboardController
     public static function publish()
     {
         $sourcePath = __FILE__;
-        $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'UserController.php');
+        $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'DashboardController.php');
         $oldNamespace = 'Devinci\LaravelEssentials\Controllers';
         $newNamespace = 'App\Http\Controllers';
 

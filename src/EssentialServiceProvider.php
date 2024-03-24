@@ -27,8 +27,33 @@ class EssentialServiceProvider extends ServiceProvider
             return new EssentialServiceProvider($app);
         });
 
-//        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-essentials');
     }
+
+    /**
+     * Display initialization instructions.
+     *
+     * @return void
+     */
+    protected function displayInitializationInstructions()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->line("\nTo initialize the login setup, run the following command:");
+            $this->line("php artisan login:setup\n");
+        }
+    }
+
+    /**
+     * Display support and contribution information.
+     *
+     * @return void
+     */
+    protected function displaySupportAndContributeInfo()
+    {
+        $this->line("\nFor support or to contribute, visit:");
+        $this->line("https://github.com/devinci-it/login-core\n");
+    }
+
+
 
     /**
      * Bootstrap services.
@@ -42,12 +67,9 @@ class EssentialServiceProvider extends ServiceProvider
                 SetupLoginCommand::class,
             ]);
         }
-	//Publish Essential Files
-        $this->registerPublishing();
-	// Load routes
-        $this->loadRoutes();
-        // Publish Blade views
-        $this->publishViews();
+
+        $this->displayInitializationInstructions();
+        $this->displaySupportAndContributeInfo();
 }
 
     /**
@@ -119,54 +141,47 @@ public function publishViews()
         }
     }
 }
+    /**
+     * Publish and refactor a file.
+     *
+     * @param  string  $sourcePath
+     * @param  string  $destinationPath
+     * @param  string  $oldNamespace
+     * @param  string  $newNamespace
+     * @return void
+     */
     public static function publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace)
     {
         try {
             $sourceContent = file_get_contents($sourcePath);
             $updatedContent = str_replace($oldNamespace, $newNamespace, $sourceContent);
 
-            // Replace old namespace declaration with new one
             $oldNamespaceDeclaration = 'namespace ' . $oldNamespace . ';';
             $newNamespaceDeclaration = 'namespace ' . $newNamespace . ';';
             $updatedContent = str_replace($oldNamespaceDeclaration, $newNamespaceDeclaration, $updatedContent);
 
-            // Replace old use statements with new ones
             $oldUseStatement = 'use ' . $oldNamespace;
             $newUseStatement = 'use ' . $newNamespace;
             $updatedContent = str_replace($oldUseStatement, $newUseStatement, $updatedContent);
 
-            // Get the directory name from the destination path
             $directory = dirname($destinationPath);
 
-            // Check if the directory exists, if not create it
             if (!file_exists($directory)) {
                 mkdir($directory, 0755, true);
             }
 
-            // Check if the file already exists at the destination path
             if (file_exists($destinationPath)) {
-                // Ask user whether to override the existing file
                 $confirmation = readline("File already exists at the destination path. Do you want to override it? (yes/no): ");
 
-                // If user confirms, make a backup (.bak) before writing the new content
-                if (strtolower($confirmation) === 'yes') {
-                    // Create backup by appending .bak to the file name
-                    $backupPath = $destinationPath . '.bak';
-                    copy($destinationPath, $backupPath);
-                } else {
-                    // If user chooses not to override, exit the function
+                if (strtolower($confirmation) !== 'yes') {
                     return;
                 }
             }
 
-            // Write the updated content to the destination path
             file_put_contents($destinationPath, $updatedContent);
 
-            // Output success message
             echo "File published and refactored successfully.\n";
-
         } catch (\Exception $e) {
-            // Handle the exception
             echo "An error occurred while publishing the file: " . $e->getMessage();
         }
     }
