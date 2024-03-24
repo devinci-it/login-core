@@ -1,7 +1,7 @@
 <?php
 
 namespace Devinci\LaravelEssentials\Requests;
-use Devinci\LaravelEssentials\EssentialServiceProvider;
+use Devinci\LaravelEssentials\LoginCoreServiceProvider;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Artisan;
@@ -48,6 +48,6 @@ public static function publish()
     $oldNamespace = 'Devinci\LaravelEssentials\Requests';
     $newNamespace = 'App\Http\Requests';
 
-    EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+    LoginCoreServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
 }
 }

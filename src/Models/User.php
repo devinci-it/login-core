@@ -2,7 +2,7 @@
 
 namespace Devinci\LaravelEssentials\Models;
 
-use Devinci\LaravelEssentials\EssentialServiceProvider;
+use Devinci\LaravelEssentials\LoginCoreServiceProvider;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -72,6 +72,6 @@ public static function publish()
     $oldNamespace = 'Devinci\LaravelEssentials\Models';
     $newNamespace = 'App\Models';
 
-    EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+    LoginCoreServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
 }
 }

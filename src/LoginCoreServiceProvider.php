@@ -15,7 +15,7 @@ use Devinci\LaravelEssentials\Requests\RegistrationRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
-class EssentialServiceProvider extends ServiceProvider
+class LoginCoreServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -24,8 +24,8 @@ class EssentialServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(EssentialServiceProvider::class, function (Application $app) {
-            return new EssentialServiceProvider($app);
+        $this->app->singleton(LoginCoreServiceProvider::class, function (Application $app) {
+            return new LoginCoreServiceProvider($app);
         });
 
     }

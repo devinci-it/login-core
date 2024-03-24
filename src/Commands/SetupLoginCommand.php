@@ -1,7 +1,7 @@
 <?php
 
 namespace Devinci\LaravelEssentials\Commands;
-use Devinci\LaravelEssentials\EssentialServiceProvider;
+use Devinci\LaravelEssentials\LoginCoreServiceProvider;
 use Illuminate\Console\Command;
 
 class SetupLoginCommand extends Command
@@ -37,7 +37,7 @@ class SetupLoginCommand extends Command
      */
     public function handle()
     {
-        // Get an instance of the EssentialServiceProvider
+        // Get an instance of the LoginCoreServiceProvider
         $essentialServiceProvider = $this->laravel->make('Devin\LaravelEssentials\EssentialServiceProvider');
 
         // Call the methods

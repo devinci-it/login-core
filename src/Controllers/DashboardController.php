@@ -2,7 +2,7 @@
 
 namespace Devinci\LaravelEssentials\Controllers;
 
-use Devinci\LaravelEssentials\EssentialServiceProvider;
+use Devinci\LaravelEssentials\LoginCoreServiceProvider;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\View\Factory;
@@ -53,7 +53,7 @@ class DashboardController
         $oldNamespace = 'Devinci\LaravelEssentials\Controllers';
         $newNamespace = 'App\Http\Controllers';
 
-        EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+        LoginCoreServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
     }
 
 }

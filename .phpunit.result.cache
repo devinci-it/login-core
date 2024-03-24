@@ -1,1 +1,1 @@
-{"version":1,"defects":[],"times":{"Tests\\EssentialServiceProviderTest::testRegisterMethod":0.026,"Tests\\EssentialServiceProviderTest::testBootMethod":0}}
+{"version":1,"defects":[],"times":{"Tests\\EssentialServiceProviderTest::testRegisterMethod":0.019,"Tests\\EssentialServiceProviderTest::testBootMethod":0}}

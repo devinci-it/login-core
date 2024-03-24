@@ -9,7 +9,7 @@ use Devinci\LaravelEssentials\Requests\LoginRequest;
 use Devinci\LaravelEssential\Models\User;
 use Devinci\LaravelEssentials\Repositories\UserRepository;
 
-use Devinci\LaravelEssentials\EssentialServiceProvider;
+use Devinci\LaravelEssentials\LoginCoreServiceProvider;
 
 
 
@@ -141,6 +141,6 @@ public static function publish()
     $oldNamespace = 'Devinci\LaravelEssentials\Controllers';
     $newNamespace = 'App\Http\Controllers';
 
-    EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+    LoginCoreServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
 }
 }

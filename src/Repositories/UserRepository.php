@@ -2,7 +2,7 @@
 
 namespace Devinci\LaravelEssentials\Repositories;
 
-use Devinci\LaravelEssentials\EssentialServiceProvider;
+use Devinci\LaravelEssentials\LoginCoreServiceProvider;
 use Devinci\LaravelEssentials\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -89,6 +89,6 @@ class UserRepository extends BaseRepository
         $oldNamespace = 'Devinci\LaravelEssentials\Repositories';
         $newNamespace = 'App\Repositories';
 
-        EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+        LoginCoreServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
     }
 }

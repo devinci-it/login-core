@@ -2,7 +2,7 @@
 
 namespace Devinci\LaravelEssentials\Migrations;
 
-use Devinci\LaravelEssentials\EssentialServiceProvider;
+use Devinci\LaravelEssentials\LoginCoreServiceProvider;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -59,6 +59,6 @@ class CreateUserTable extends Migration
         $oldNamespace = 'Devinci\LaravelEssentials\Migrations';
         $newNamespace = 'Database\Migrations';
 
-        EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+        LoginCoreServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
     }
 }

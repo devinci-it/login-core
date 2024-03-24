@@ -21,7 +21,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Devinci\\LaravelEssentials\\EssentialServiceProvider"
+        "LoginCoreServiceProvider"
       ]
     }
   },
