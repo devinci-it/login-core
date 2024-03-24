@@ -1,6 +1,7 @@
 {
   "name": "devinci-it/login-core",
   "type": "library",
+  "description": "Essential features for Laravel applications, including a standard login and registration system.",
   "require": {
     "laravel/framework": "^11.0"
   },
