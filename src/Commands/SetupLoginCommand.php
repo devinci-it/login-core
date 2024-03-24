@@ -38,7 +38,7 @@ class SetupLoginCommand extends Command
     public function handle()
     {
         // Get an instance of the EssentialServiceProvider
-        $essentialServiceProvider = $this->laravel->make('Devin\LaravelEssentials\EssentialServiceProvider');
+        $essentialServiceProvider = $this->laravel->make('Devinci\LaravelEssentials\EssentialServiceProvider');
 
         // Call the methods
         $essentialServiceProvider->registerPublishing();
