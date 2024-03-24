@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6b8ac1529b92ef1e08d872f7e9b2788",
+    "content-hash": "494747731e5225ec4af0ae92b817b6c5",
     "packages": [
         {
             "name": "brick/math",
@@ -1573,12 +1573,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "abbd664eb4381102c559d358420989f835208f18"
+                "reference": "706ca1e53a0f63d90fca12d2afdd8243e599b01c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/abbd664eb4381102c559d358420989f835208f18",
-                "reference": "abbd664eb4381102c559d358420989f835208f18",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/706ca1e53a0f63d90fca12d2afdd8243e599b01c",
+                "reference": "706ca1e53a0f63d90fca12d2afdd8243e599b01c",
                 "shasum": ""
             },
             "require": {
@@ -1644,7 +1644,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.25.1"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.x"
             },
             "funding": [
                 {
@@ -1656,7 +1656,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-16T12:53:19+00:00"
+            "time": "2024-03-24T11:43:39+00:00"
         },
         {
             "name": "league/flysystem-local",
