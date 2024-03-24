@@ -107,13 +107,13 @@ class BaseRepository extends Controller
      *
      * @return void
      */
-public static function publish()
-{
-    $sourcePath = __FILE__;
-    $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Repositories' . DIRECTORY_SEPARATOR . 'BaseRepository.php');
-    $oldNamespace = 'Devinci\LaravelEssentials\Repositories';
-    $newNamespace = 'App\Repositories';
+    public static function publish()
+    {
+        $sourcePath = __FILE__;
+        $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Repositories' . DIRECTORY_SEPARATOR . 'BaseRepository.php');
+        $oldNamespace = 'Devinci\LaravelEssentials\Repositories';
+        $newNamespace = 'App\Repositories';
 
-    EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-}
+        EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+    }
 }

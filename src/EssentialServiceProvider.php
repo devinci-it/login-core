@@ -121,28 +121,53 @@ public function publishViews()
 }
     public static function publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace)
     {
-        $sourceContent = file_get_contents($sourcePath);
-        $updatedContent = str_replace($oldNamespace, $newNamespace, $sourceContent);
+        try {
+            $sourceContent = file_get_contents($sourcePath);
+            $updatedContent = str_replace($oldNamespace, $newNamespace, $sourceContent);
 
-        // Replace old namespace declaration with new one
-        $oldNamespaceDeclaration = 'namespace ' . $oldNamespace.';';
-        $newNamespaceDeclaration = 'namespace ' . $newNamespace.';';
-        $updatedContent = str_replace($oldNamespaceDeclaration, $newNamespaceDeclaration, $updatedContent);
+            // Replace old namespace declaration with new one
+            $oldNamespaceDeclaration = 'namespace ' . $oldNamespace . ';';
+            $newNamespaceDeclaration = 'namespace ' . $newNamespace . ';';
+            $updatedContent = str_replace($oldNamespaceDeclaration, $newNamespaceDeclaration, $updatedContent);
 
-        // Replace old use statements with new ones
-        $oldUseStatement = 'use ' . $oldNamespace;
-        $newUseStatement = 'use ' . $newNamespace;
-        $updatedContent = str_replace($oldUseStatement, $newUseStatement, $updatedContent);
+            // Replace old use statements with new ones
+            $oldUseStatement = 'use ' . $oldNamespace;
+            $newUseStatement = 'use ' . $newNamespace;
+            $updatedContent = str_replace($oldUseStatement, $newUseStatement, $updatedContent);
 
-        // Get the directory name from the destination path
-        $directory = dirname($destinationPath);
+            // Get the directory name from the destination path
+            $directory = dirname($destinationPath);
 
-        // Check if the directory exists, if not create it
-        if (!file_exists($directory)) {
-            mkdir($directory, 0755, true);
+            // Check if the directory exists, if not create it
+            if (!file_exists($directory)) {
+                mkdir($directory, 0755, true);
+            }
+
+            // Check if the file already exists at the destination path
+            if (file_exists($destinationPath)) {
+                // Ask user whether to override the existing file
+                $confirmation = readline("File already exists at the destination path. Do you want to override it? (yes/no): ");
+
+                // If user confirms, make a backup (.bak) before writing the new content
+                if (strtolower($confirmation) === 'yes') {
+                    // Create backup by appending .bak to the file name
+                    $backupPath = $destinationPath . '.bak';
+                    copy($destinationPath, $backupPath);
+                } else {
+                    // If user chooses not to override, exit the function
+                    return;
+                }
+            }
+
+            // Write the updated content to the destination path
+            file_put_contents($destinationPath, $updatedContent);
+
+            // Output success message
+            echo "File published and refactored successfully.\n";
+
+        } catch (\Exception $e) {
+            // Handle the exception
+            echo "An error occurred while publishing the file: " . $e->getMessage();
         }
-
-        file_put_contents($destinationPath, $updatedContent);
     }
-
 }

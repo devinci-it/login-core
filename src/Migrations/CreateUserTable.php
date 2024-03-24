@@ -52,13 +52,13 @@ class CreateUserTable extends Migration
      *
      * @return void
      */
-public static function publish()
-{
-    $sourcePath = __FILE__;
-    $destinationPath = base_path('database' . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR . 'CreateUserTable.php');
-    $oldNamespace = 'Devinci\LaravelEssentials\Migrations';
-    $newNamespace = 'Database\Migrations';
+    public static function publish()
+    {
+        $sourcePath = __FILE__;
+        $destinationPath = base_path('database' . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR . date('Y_m_d_His') . '_create_user_table.php');
+        $oldNamespace = 'Devinci\LaravelEssentials\Migrations';
+        $newNamespace = 'Database\Migrations';
 
-    EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-}
+        EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+    }
 }

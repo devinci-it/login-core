@@ -9,6 +9,10 @@ use Devinci\LaravelEssentials\Requests\LoginRequest;
 use Devinci\LaravelEssential\Models\User;
 use Devinci\LaravelEssentials\Repositories\UserRepository;
 
+use Devinci\LaravelEssentials\EssentialServiceProvider;
+
+
+
 use Exception;
 
 use Illuminate\Http\Request;
@@ -17,8 +21,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
-use Devinci\LaravelEssentials\EssentialServiceProvider;
 use Devinci\LaravelEssentials\Controllers\Controller;
+
 /**
  * Class UserAccessControl
  * @package Devinci\LaravelEssential\Controllers

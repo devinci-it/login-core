@@ -1,6 +1,7 @@
 <?php
 
 namespace Devinci\LaravelEssentials\Controllers;
+
 use Devinci\LaravelEssentials\EssentialServiceProvider;
 
 use Illuminate\Support\Facades\Auth;
@@ -45,16 +46,14 @@ class DashboardController
      *
      * @return void
      */
-   public static function publish()
-
-   {
+    public static function publish()
+    {
         $sourcePath = __FILE__;
-        $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'DashboardController.php');
-        $oldNamespace = 'Devinci\\LaravelEssentials\\Controllers\\';
-        $newNamespace = 'App\\Http\\Controllers\\';
+        $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'UserController.php');
+        $oldNamespace = 'Devinci\LaravelEssentials\Controllers';
+        $newNamespace = 'App\Http\Controllers';
 
         EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-
     }
 
 }

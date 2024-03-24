@@ -82,13 +82,13 @@ class UserRepository extends BaseRepository
      *
      * @return void
      */
-public static function publish()
-{
-    $sourcePath = __FILE__;
-    $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Repositories' . DIRECTORY_SEPARATOR . 'UserRepository.php');
-    $oldNamespace = 'Devinci\\LaravelEssentials\\Repositories\\';
-    $newNamespace = 'App\\Repositories\\';
+    public static function publish()
+    {
+        $sourcePath = __FILE__;
+        $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Repositories' . DIRECTORY_SEPARATOR . 'UserRepository.php');
+        $oldNamespace = 'Devinci\LaravelEssentials\Repositories';
+        $newNamespace = 'App\Repositories';
 
-    EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-}
+        EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+    }
 }
