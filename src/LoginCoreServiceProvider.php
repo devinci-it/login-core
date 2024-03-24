@@ -24,12 +24,14 @@ class LoginCoreServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     public function register()
     {
         $this->app->singleton(LoginCoreServiceProvider::class, function ($app) {
             return new LoginCoreServiceProvider($app);
         });
     }
+
 
 
     /**
