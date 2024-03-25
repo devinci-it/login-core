@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create_tag:
+    name: Create Tag
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Update dependencies
+        run: |
+          composer update
+
+      - name: Install dependencies
+        run: |
+          composer install
+
+      - name: Create Tag
+        run: |
+          git tag -a v${{ github.run_number }} -m "Auto-generated tag for build ${{ github.run_number }}"
+          git push origin v${{ github.run_number }}
+
+      - name: Update composer.json
+        run: |
+          jq '.version = "v${{ github.run_number }}"' composer.json > composer.json.tmp && mv composer.json.tmp composer.json
+          git add composer.json
+          git commit -m "Update version in composer.json"
+          git push origin main
