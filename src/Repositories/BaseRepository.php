@@ -12,7 +12,7 @@
 
 namespace Devinci\LaravelEssentials\Repositories;
 
-use Devinci\LaravelEssentials\Controllers\Controller;
+use Devinci\LaravelEssentials\Http\Controllers\Controller;
 use Devinci\LaravelEssentials\EssentialServiceProvider;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;

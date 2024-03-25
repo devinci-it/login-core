@@ -1,21 +1,22 @@
 <?php
+    namespace Devinci\LaravelEssentials;
 
-namespace Devinci\LaravelEssentials;
+    use Devinci\LaravelEssentials\Http\Controllers\Controller;
+    use Devinci\LaravelEssentials\Utilities\FileManager;
+    use Devinci\LaravelEssentials\Commands\SetupLoginCommand;
+    use Devinci\LaravelEssentials\Http\Controllers\DashboardController;
+    use Devinci\LaravelEssentials\Http\Controllers\UserAccessControl;
+    use Devinci\LaravelEssentials\Migrations\CreateUserTable;
+    use Devinci\LaravelEssentials\Models\User;
+    use Devinci\LaravelEssentials\Repositories\BaseRepository;
+    use Devinci\LaravelEssentials\Repositories\UserRepository;
+    use Devinci\LaravelEssentials\Requests\LoginRequest;
+    use Devinci\LaravelEssentials\Requests\RegistrationRequest;
+    use Illuminate\Contracts\Foundation\Application;
+    use Illuminate\Support\ServiceProvider;
 
-use Devinci\LaravelEssentials\Commands\SetupLoginCommand;
-use Devinci\LaravelEssentials\Controllers\DashboardController;
-use Devinci\LaravelEssentials\Controllers\UserAccessControl;
-use Devinci\LaravelEssentials\Migrations\CreateUserTable;
-use Devinci\LaravelEssentials\Models\User;
-use Devinci\LaravelEssentials\Repositories\BaseRepository;
-use Devinci\LaravelEssentials\Repositories\UserRepository;
-use Devinci\LaravelEssentials\Requests\LoginRequest;
-use Devinci\LaravelEssentials\Requests\RegistrationRequest;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Support\ServiceProvider;
-
-class EssentialServiceProvider extends ServiceProvider
-{
+    class EssentialServiceProvider extends ServiceProvider
+    {
     /**
      * Register services.
      *
@@ -67,7 +68,7 @@ class EssentialServiceProvider extends ServiceProvider
 
         #$this->displayInitializationInstructions();
         #$this->displaySupportAndContributeInfo();
-}
+    }
 
     /**
      * Register the package's publishable resources.
@@ -92,43 +93,42 @@ class EssentialServiceProvider extends ServiceProvider
             // Publish Requests
             RegistrationRequest::publish();
             LoginRequest::publish();
+
         }
     }
- /**
- * Load package routes.
- *
- * @return void
- */
-public function loadRoutes()
-{
+    /**
+    * Load package routes.
+    *
+    * @return void
+    */
+    public function loadRoutes()
+    {
     $sourcePath = __DIR__.'/routes/web.php';
     $destinationPath = base_path('routes' . DIRECTORY_SEPARATOR . 'web.php');
     $oldNamespace = 'Devinci\LaravelEssentials';
     $newNamespace = 'App';
 
     self::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-}
+    }
 
-/**
- * Publish Blade views.
- *
- * @return void
- */
-public function publishViews()
-{
-    if ($this->app->runningInConsole()) {
-        $sourceDirectory = __DIR__.'/resources/views';
-        $destinationDirectory = resource_path('views/vendor/laravel-essentials');
-        $oldNamespace = 'Devinci\LaravelEssentials';
-        $newNamespace = '';
+    /**
+    * Publish Blade views.
+    *
+    * @return void
+    */
+    public function publishViews()
+    {
+        if ($this->app->runningInConsole()) {
+            $sourceDirectory = __DIR__.'/resources/views/auth';
+            $destinationDirectory = resource_path('views/vendor/laravel-essentials');
+            $oldNamespace = 'Devinci\LaravelEssentials';
+            $newNamespace = '';
 
-        // Get all files in the source directory
-        $files = glob($sourceDirectory . '/*');
+            // Get all files in the source directory excluding subdirectories
+            $files = glob($sourceDirectory . '/*.{php,blade.php}', GLOB_BRACE);
 
-        // Iterate over each file
-        foreach ($files as $file) {
-            // Check if the path is a file
-            if (is_file($file)) {
+            // Iterate over each file
+            foreach ($files as $file) {
                 // Construct the destination path
                 $destinationPath = $destinationDirectory . '/' . basename($file);
 
@@ -137,49 +137,57 @@ public function publishViews()
             }
         }
     }
-}
+
     /**
-     * Publish and refactor a file.
+     * Publishes a file from source path to destination path and refactors namespace and use statements.
      *
-     * @param  string  $sourcePath
-     * @param  string  $destinationPath
-     * @param  string  $oldNamespace
-     * @param  string  $newNamespace
+     * @param string $sourcePath The path to the source file.
+     * @param string $destinationPath The path to publish the file.
+     * @param string $oldNamespace The old namespace to be replaced.
+     * @param string $newNamespace The new namespace to replace the old one.
      * @return void
      */
     public static function publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace)
     {
         try {
-            $sourceContent = file_get_contents($sourcePath);
-            $updatedContent = str_replace($oldNamespace, $newNamespace, $sourceContent);
+            // Instantiate FileManager
+            $fileManager = new FileManager();
 
-            $oldNamespaceDeclaration = 'namespace ' . $oldNamespace . ';';
-            $newNamespaceDeclaration = 'namespace ' . $newNamespace . ';';
-            $updatedContent = str_replace($oldNamespaceDeclaration, $newNamespaceDeclaration, $updatedContent);
+            // Read the content from source file
+            $sourceContent = $fileManager->readFile($sourcePath);
 
-            $oldUseStatement = 'use ' . $oldNamespace;
-            $newUseStatement = 'use ' . $newNamespace;
-            $updatedContent = str_replace($oldUseStatement, $newUseStatement, $updatedContent);
+            // Set namespace replacement pairs
+            $fileManager->addNamespaceReplacement("Devinci\LaravelEssentials", "App");
 
+            // Add strings to exclude from refactoring
+            $fileManager->addRefactorExclusion('use Devinci\LaravelEssentials\EssentialServiceProvider;');
+
+            // Refactor the content
+            $updatedContent = $fileManager->refactorContent($sourceContent);
+
+            // Ensure destination directory exists
             $directory = dirname($destinationPath);
-
-            if (!file_exists($directory)) {
+            if (!$fileManager->pathExists($directory)) {
                 mkdir($directory, 0755, true);
             }
 
-            if (file_exists($destinationPath)) {
-                $confirmation = readline("File already exists at the destination path. Do you want to override it? (yes/no): ");
+            // Check if file already exists
+            if ($fileManager->pathExists($destinationPath)) {
+                echo "File already exists at the destination path: $destinationPath\n";
+                $confirmation = readline("Do you want to override it? (yes/no)[no]: ");
 
                 if (strtolower($confirmation) !== 'yes') {
                     return;
                 }
             }
 
-            file_put_contents($destinationPath, $updatedContent);
+            // Write the refactored content to the destination file
+            $fileManager->writeFile($destinationPath, $updatedContent);
 
-            echo "File published and refactored successfully.\n";
+            echo "$destinationPath: File published and refactored successfully.\n";
         } catch (\Exception $e) {
             echo "An error occurred while publishing the file: " . $e->getMessage();
         }
     }
-}
+
+    }

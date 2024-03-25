@@ -1,6 +1,6 @@
 <?php
 
-namespace Devinci\LaravelEssentials\Controllers;
+namespace Devinci\LaravelEssentials\Http\Controllers;
 
 use Devinci\LaravelEssentials\EssentialServiceProvider;
 

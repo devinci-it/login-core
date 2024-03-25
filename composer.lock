@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "59c379c0efd57624062c7dea2b2ce46e",
+    "content-hash": "2c8834b93c61316f6f0dd87e29e0716b",
     "packages": [
         {
             "name": "brick/math",
@@ -1573,12 +1573,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "f27e4c8a0db2f6edcefcab3947b5c619f2472e5b"
+                "reference": "2d1a8d469ffd8064904b0bd13cbc60b26a06aa8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f27e4c8a0db2f6edcefcab3947b5c619f2472e5b",
-                "reference": "f27e4c8a0db2f6edcefcab3947b5c619f2472e5b",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/2d1a8d469ffd8064904b0bd13cbc60b26a06aa8c",
+                "reference": "2d1a8d469ffd8064904b0bd13cbc60b26a06aa8c",
                 "shasum": ""
             },
             "require": {
@@ -1656,7 +1656,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-24T12:11:42+00:00"
+            "time": "2024-03-24T21:16:30+00:00"
         },
         {
             "name": "league/flysystem-local",

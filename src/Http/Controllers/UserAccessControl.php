@@ -1,12 +1,12 @@
 <?php
 
-namespace Devinci\LaravelEssentials\Controllers;
+namespace Devinci\LaravelEssentials\Http\Controllers;
 
 
 
 use Devinci\LaravelEssentials\Requests\RegistrationRequest;
 use Devinci\LaravelEssentials\Requests\LoginRequest;
-use Devinci\LaravelEssential\Models\User;
+use Devinci\LaravelEssentials\Models\User;
 use Devinci\LaravelEssentials\Repositories\UserRepository;
 
 use Devinci\LaravelEssentials\EssentialServiceProvider;
@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
-use Devinci\LaravelEssentials\Controllers\Controller;
+use Devinci\LaravelEssentials\Http\Controllers\Controller;
 
 /**
  * Class UserAccessControl
@@ -138,8 +138,8 @@ public static function publish()
 {
     $sourcePath = __FILE__;
     $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'UserAccessControl.php');
-    $oldNamespace = 'Devinci\LaravelEssentials\Controllers';
-    $newNamespace = 'App\Http\Controllers';
+    $oldNamespace = 'Devinci\\LaravelEssentials\\Controllers';
+    $newNamespace = 'App\\Http\\Controllers';
 
     EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
 }
