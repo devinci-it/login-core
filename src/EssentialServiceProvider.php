@@ -116,29 +116,27 @@
     *
     * @return void
     */
-    public function publishViews()
-    {
-        if ($this->app->runningInConsole()) {
-            $sourceDirectory = __DIR__.'/resources/views/auth';
-            $destinationDirectory = resource_path('views/vendor/laravel-essentials');
-            $oldNamespace = 'Devinci\LaravelEssentials';
-            $newNamespace = '';
+        public function publishViews()
+        {
+            if ($this->app->runningInConsole()) {
+                $sourceDirectory = __DIR__.'/resources/views/auth';
+                $destinationDirectory = resource_path('views/vendor/laravel-essentials');
 
-            // Get all files in the source directory excluding subdirectories
-            $files = glob($sourceDirectory . '/*.{php,blade.php}', GLOB_BRACE);
+                // Get all files in the source directory excluding subdirectories
+                $files = glob($sourceDirectory . '/*.{php,blade.php}', GLOB_BRACE);
 
-            // Iterate over each file
-            foreach ($files as $file) {
-                // Construct the destination path
-                $destinationPath = $destinationDirectory . '/' . basename($file);
+                // Iterate over each file
+                foreach ($files as $file) {
+                    // Construct the destination path without nesting
+                    $destinationPath = $destinationDirectory . '/' . basename($file);
 
-                // Call the publishAndRefactor method for each file
-                self::publishAndRefactor($file, $destinationPath, $oldNamespace, $newNamespace);
+                    // Copy the file to the destination
+                    copy($file, $destinationPath);
+                }
             }
         }
-    }
 
-    /**
+        /**
      * Publishes a file from source path to destination path and refactors namespace and use statements.
      *
      * @param string $sourcePath The path to the source file.
