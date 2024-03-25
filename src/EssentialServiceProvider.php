@@ -119,22 +119,25 @@
         public function publishViews()
         {
             if ($this->app->runningInConsole()) {
-                $sourceDirectory = __DIR__.'/resources/views/auth';
-                $destinationDirectory = resource_path('views/vendor/laravel-essentials');
+                $sourceDirectory = base_path('vendor/devinci-it/login-core/src/resources/views/auth');
+                $destinationDirectory = resource_path('views');
 
-                // Get all files in the source directory excluding subdirectories
+                // Get all files in the source directory
                 $files = glob($sourceDirectory . '/*.{php,blade.php}', GLOB_BRACE);
 
                 // Iterate over each file
                 foreach ($files as $file) {
-                    // Construct the destination path without nesting
-                    $destinationPath = $destinationDirectory . '/' . basename($file);
+                    // Get the filename without the path
+                    $filename = basename($file);
+
+                    // Construct the destination path in the resources/views directory
+                    $destinationPath = $destinationDirectory . '/' . $filename;
 
                     // Copy the file to the destination
                     copy($file, $destinationPath);
                 }
             }
-        }
+    }
 
         /**
      * Publishes a file from source path to destination path and refactors namespace and use statements.
