@@ -116,7 +116,7 @@ class FileManager
 
         // Replace use statements
         $oldUseStatement = 'use ' . $oldNamespace;
-        $newUseStatement = 'use ' . $newNamespace;
+        $newUseStatement = 'use ' . ucfirst($newNamespace);
         $content = str_replace($oldUseStatement, $newUseStatement, $content);
 
         return $content;

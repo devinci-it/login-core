@@ -43,7 +43,7 @@ class LoginRequest extends FormRequest
  public static function publish()
 {
     $sourcePath = __FILE__;
-    $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Requests' . DIRECTORY_SEPARATOR . 'LoginRequest.php');
+    $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Requests' . DIRECTORY_SEPARATOR . 'LoginRequest.php');
     $oldNamespace = 'Devinci\LaravelEssentials\Requests';
     $newNamespace = 'App\Requests';
 
