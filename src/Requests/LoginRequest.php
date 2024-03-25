@@ -45,7 +45,7 @@ class LoginRequest extends FormRequest
     $sourcePath = __FILE__;
     $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Requests' . DIRECTORY_SEPARATOR . 'LoginRequest.php');
     $oldNamespace = 'Devinci\LaravelEssentials\Requests';
-    $newNamespace = 'App\Http\Requests';
+    $newNamespace = 'App\Requests';
 
     EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
 }

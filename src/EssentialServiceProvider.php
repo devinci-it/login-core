@@ -182,8 +182,8 @@
                 }
             }
 
-            // Write the refactored content to the destination file
-            $fileManager->writeFile($destinationPath, $updatedContent);
+            $newContent = str_replace('use App\EssentialServiceProvider;', 'use Devinci\LaravelEssentials\EssentialServiceProvider;', $updatedContent);
+            $fileManager->writeFile($destinationPath,$newContent);
 
             echo "$destinationPath: File published and refactored successfully.\n";
         } catch (\Exception $e) {
