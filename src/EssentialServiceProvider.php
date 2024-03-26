@@ -15,6 +15,7 @@
     use Exception;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Support\ServiceProvider;
+    use Illuminate\Support\Facades\File;
 
     class EssentialServiceProvider extends ServiceProvider
     {
@@ -66,18 +67,25 @@
             $this->commands([
                 SetupLoginCommand::class,
             ]);
-
-            $this->publishes([
-                __DIR__.'/resources/css' => public_path('css'),
-            ], 'public');
-
-            echo 'CSS files published successfully.';
-
         }
 
         #$this->displayInitializationInstructions();
         #$this->displaySupportAndContributeInfo();
     }
+
+        public function publishCSS()
+        {
+            // Copy CSS files from package to Laravel's public directory
+            $sourcePath = __DIR__ . '/resources/css';
+            $destinationPath = public_path('css');
+
+            if (!File::exists($destinationPath)) {
+                File::makeDirectory($destinationPath, 0755, true);
+            }
+
+            File::copyDirectory($sourcePath, $destinationPath);
+
+        }
 
     /**
      * Register the package's publishable resources.

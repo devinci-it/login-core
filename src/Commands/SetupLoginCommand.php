@@ -44,6 +44,7 @@ class SetupLoginCommand extends Command
         $essentialServiceProvider->registerPublishing();
         $essentialServiceProvider->loadRoutes();
         $essentialServiceProvider->publishViews();
+        $essentialServiceProvider->publishCSS();
 
         return 0;
     }
