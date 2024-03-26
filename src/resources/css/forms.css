@@ -373,3 +373,9 @@ textarea{
     flex-direction: row;
     margin-top: 6px;
 }
+
+.form-wrapper {
+    padding: 15px 5px;
+    width: clamp(300px, 100%, 800px);
+    margin: 10px auto; /* Center the form if its width is less than the parent's width */
+}

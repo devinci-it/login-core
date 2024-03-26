@@ -1,0 +1,157 @@
+body {
+    background-color: #24292f;
+}
+
+.footer-section {
+    background-color: #24292f;
+!important;
+    color: #ccc;
+    width: 100vw;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    /* padding: 20px; */
+    align-content: space-around;
+}
+
+a {
+    cursor: pointer;
+    color: #c4c4c4;
+}
+
+
+
+.login-container h3 {
+    margin-top: 20px;
+    color: #fff;
+}
+
+@media screen and (max-width: 570px) {
+    form {
+        width: 80%; /* Adjust the width as needed */
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    !important;
+    }
+
+    .grid .logo-display {
+        display: none;
+    }
+}
+
+h3 {
+    color: #fff;
+}
+
+
+.logo-wrapper {
+    position: relative
+}
+
+.logo-display {
+    width: 100%;
+}
+
+form > a {
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+main{
+    padding: 20px;
+}
+.register-container form > h3 {
+    padding-bottom: 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+@keyframes glowAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity:.8;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+/*WELCOME*/
+.welcome-container{
+    color: var(--light-color);
+}
+.code-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    padding: 10px 0;
+}
+
+.code-char {
+    border: solid 1px var(--border-color);
+    padding: 10px;
+    background-color: var(--light-color);
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+
+}
+
+.container.welcome-container {
+    display: grid;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.graphics-wrapper>img {
+    width: 300px;
+    opacity: 0;
+
+}
+.graphics-wrapper{
+    animation-delay: 2s; !important;
+}
+
+a {
+    padding: 5px 0;
+
+}
+
+@media print {
+    .graphics-wrapper img:first-child {
+        display: none;
+    }
+
+    .graphics-wrapper img:last-child {
+        display: block;
+    }
+}
+
+
+.button-group{
+    display: flex;
+    margin-top: 30%;
+    gap:10px;}
+
+main#login-content .container {
+    display: flex;
+    min-height: 80vh;
+    justify-content: flex-end;
+}
