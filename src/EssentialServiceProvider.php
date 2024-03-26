@@ -12,6 +12,7 @@
     use Devinci\LaravelEssentials\Repositories\UserRepository;
     use Devinci\LaravelEssentials\Requests\LoginRequest;
     use Devinci\LaravelEssentials\Requests\RegistrationRequest;
+    use Exception;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Support\ServiceProvider;
 
@@ -45,7 +46,8 @@
      * Display support and contribution information.
      *
      * @return int
-     * */
+     *
+     */
     protected function displaySupportAndContributeInfo()
     {
         return 0;
@@ -64,6 +66,13 @@
             $this->commands([
                 SetupLoginCommand::class,
             ]);
+
+            $this->publishes([
+                __DIR__.'/resources/css' => public_path('css'),
+            ], 'public');
+
+            echo 'CSS files published successfully.';
+
         }
 
         #$this->displayInitializationInstructions();
@@ -186,7 +195,7 @@
             $fileManager->writeFile($destinationPath,$newContent);
 
             echo "$destinationPath: File published and refactored successfully.\n";
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             echo "An error occurred while publishing the file: " . $e->getMessage();
         }
     }

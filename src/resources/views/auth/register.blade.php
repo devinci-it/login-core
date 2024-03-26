@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
-    <!-- Stylesheet from Devinci/LaravelEssentials package -->
-    <link href="{{ asset('vendor/laravel-essentials/css/styles.css') }}" rel="stylesheet">
-</head>
-<body>
-    <!-- Form for user registration (from Devinci/LaravelEssentials package) -->
+@include('header')
+
+<!-- Main content for user login -->
+<main class="main-content" id="login-content">
+    <div class="container">
+        <div class="form-wrapper">
+            <h2 class="title-medium-text">REGISTER</h2>
+            <hr/>
+
     <form action="/register" method="POST">
         @csrf
 
@@ -25,5 +23,7 @@
             By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use.
         </p>
     </form>
-</body>
-</html>
+        </div>
+    </div>
+</main>
+

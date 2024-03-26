@@ -10,10 +10,11 @@
  * @package  Devinci\LaravelEssentials\Repositories
  */
 
-namespace Devinci\LaravelEssentials\Repositories;
+namespace App\Repositories;
 
-use Devinci\LaravelEssentials\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Devinci\LaravelEssentials\EssentialServiceProvider;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -57,7 +58,7 @@ class BaseRepository extends Controller
                 'data' => $createdModel
             ], 201);
         }
-        catch (\Exception $e) {
+        catch (Exception $e) {
             return response()->json([
                 'status' => 'error',
                 'message' => $e->getMessage()

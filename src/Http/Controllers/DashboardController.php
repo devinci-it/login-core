@@ -1,8 +1,9 @@
 <?php
 
-namespace Devinci\LaravelEssentials\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Devinci\LaravelEssentials\EssentialServiceProvider;
+
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\View\Factory;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Artisan;
  */
 class DashboardController
 {
+
     public function index()
     {
         if (!Auth::check()) {
@@ -38,7 +40,7 @@ class DashboardController
             $userName = '';
         }
 
-        return view('home', ['userName' => $userName]);
+        return view('home')->with('username', $userName);
     }
 
     /**

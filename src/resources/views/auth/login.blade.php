@@ -1,33 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
-    <!-- Link to the CSS file from the package -->
-    <link href="{{ asset('vendor/devinci/laravel-essentials/css/styles.css') }}" rel="stylesheet">
-</head>
-<body>
-    <!-- Main content for user login -->
+@include('header')
+
+<!-- Main content for user login -->
     <main class="main-content" id="login-content">
         <div class="container">
-            <div class="container login-container">
-                <h2 class="body-medium-text">USER LOGIN</h2>
+            <div class="form-wrapper">
+                <h2 class="title-medium-text">USER LOGIN</h2>
                 <form action="/login" method="POST">
                     @csrf
-                    <label class="caption-text">
-                        Username: <input class="form-input" type="text" name="username" required>
+                    <label class="caption-text dark">
+                        <input placeholder="Username" class="input form-input" type="text" name="username" required>
                     </label>
                     <br>
-                    <label class="caption-text">
-                        Password:
-                        <input type="password" class="form-input" name="password" required>
+                    <label class="caption-text dark">
+                        <input placeholder="Password" type="password" class="input form-input" name="password" required>
+
                     </label>
                     <br>
                     <input class="btn submit-button" name="submit" type="submit" value="Login">
                 </form>
+                    <div class="link_wrapper flex">
+                        <a class="caption-text dark" href="/register"> Register</a>
+                        <a class="caption-text dark" href="#"> Forgot Password</a>
+                    </div>
             </div>
         </div>
     </main>
+
 </body>
 </html>

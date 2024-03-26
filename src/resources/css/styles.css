@@ -1,0 +1,416 @@
+/* Define colors */
+:root {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f6f8fa;
+  --text-color: #24292f;
+  --link-color: #0366d6;
+  --link-hover-color: #005cc5;
+  --border-color: #e1e4e8;
+  --icon-color: #586069;
+  --primary-color: #dcdbdb;
+  --accent-color: #24292F;
+  --light-color: #F6F8FA;
+  --icon-color: #c4d6ea; /* Replace with Octoicon Prime light color */
+}
+
+body {
+  background-color: var(--secondary-bg);
+  min-height: 80vh;
+  font-size: 16px; /* Define base font size for rem calculations */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100vh;}
+
+/************************************************
+HEADER STYLES
+**************************************************/
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 0 0;
+  background-color: var(--light-color);
+  color: var(--accent-color);
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.nexus-header-item {
+  margin: 0 0.3125rem;
+}
+
+.nexus-logo {
+  height: 2.875rem;
+  width: auto;
+  max-width: 5.125rem;
+}
+
+.nexus-form-control.nexus-header-input {
+  width: 100%;
+  padding: 0.625rem;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.nexus-btn.nexus-btn-search {
+  padding: 0.625rem 1.25rem;
+  border: none;
+  color: #fff;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.nexus-avatar {
+  border-radius: 50%;
+}
+
+a.nexus-header-link {
+  display: flex;
+  gap: 0.625rem;
+  align-content: center;
+  align-items: flex-end;
+}
+
+@media (max-width: 48em) { /* 768px / 16px base font size */
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #user-icon {
+    margin-top: 0.625rem;
+  }
+
+  a.nexus-header-link {
+    margin: 0.625rem auto;
+  }
+}
+
+/************************************************
+ FOOTER STYLES
+**************************************************/
+
+.footer-section {
+  display: flex;
+  gap:15px;
+  justify-content: space-between;
+  padding: 1.25rem 0;
+  background-color: var(--light-color);
+  color: var(--accent-color);
+}
+.nexus-footer-item nav {
+  gap: 13px;
+  display: flex;
+}
+.container {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.nexus-footer-item {
+  margin: 0 0.3125rem;
+}
+
+.nexus-footer-item p {
+  margin: 0;
+}
+
+.nexus-footer-link {
+  margin: 0 0.35rem;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+@media (max-width: 48em) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nexus-footer-item {
+    margin: 0.625rem auto;
+  }
+}
+
+body {
+    font-family: 'Outfit', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f8fa;
+    color: #24292e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+p{
+    max-width: 55ch;
+    padding-left: 15px;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.header, .content, .left-pane, .right-pane, .footer {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header, .footer {
+    background-color: #24292e;
+    color: #fff;
+    padding: 16px;
+}
+
+.content {
+    padding: 16px;
+}
+
+.left-pane, .right-pane {
+    width: 100%;
+}
+
+.left-pane {
+    background-color: #f6f8fa;
+    padding: 16px;
+}
+
+.right-pane {
+    background-color: #fff;
+    padding: 16px;
+}
+
+.footer {
+    background-color: #f6f8fa;
+    color: #586069;
+}
+
+.form-control {
+    margin-bottom: 20px;
+}
+main{
+    max-width: 800px;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #5e5e62; /* GitHub's link color for labels */
+}
+
+.input-field {
+    font-family: 'Outfit',sans-serif;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-input {
+    margin-right: 8px;
+}
+
+.required-indicator {
+    color: red;
+    margin-left: 4px;
+}
+
+.caption-text {
+    color: #586069;
+    font-size: 12px;
+    padding-top: 5px;
+    margin: 5px 0;
+}
+
+.validation-message {
+    color: red;
+    margin-top: 5px;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 767px) {
+    .form-control {
+        width: 100%;
+    }
+}
+
+
+
+
+/*FORM STYLES*/
+form{
+    margin-top: 2rem;
+}
+#guestName {
+    display: flex;
+    width: 80vw;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+fieldset{
+    border: none;
+    padding: 8px;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 18px;
+    color: #0366d6;
+}
+
+label {
+    display: none;
+    margin-bottom: 8px;
+    color: #24292e;
+}
+
+.input-field {
+    width: calc(100% - 8px);
+    display: inline-block;
+    margin-right: 16px;
+}
+
+textarea{
+    font-family: 'Outfit',sans-serif;
+    padding: 8px;
+    resize: none;
+}
+
+.floating-label {
+    position: relative;
+}
+
+.label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    transition: transform 0.3s, font-size 0.3s;
+}
+
+.input-field:focus + .label,
+.input-field:valid + .label,
+.input-field:not(:placeholder-shown) + .label {
+    transform: translateY(-100%) scale(0.8);
+    font-size: 0.8em;
+}
+
+.form-buttons {
+    margin-top: 16px;
+}
+
+.submit-button, .clear-button {
+    padding: 8px 16px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    background-color: #f6f8fa;
+    color: #23282e;
+    border: solid 1px rgb(208 215 222);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+h2{
+    border-bottom: solid 1px   rgb(208 215 222);
+;
+
+}
+
+/* Add this CSS for the sliding animation */
+.error-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.error-list li {
+    background-color: #ff6961; /* Light red color for error messages */
+    color: #fff; /* White text color */
+    padding: 10px;
+    margin: 10px 0;
+    width: 350px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.error-list li.slide-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.toast.slide-out {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+
+/* Add this style to your CSS file or in the head section of your HTML file */
+.draft-message {
+    width: 400px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.draft-message p {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.draft-message ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.draft-message li {
+    margin-bottom: 5px;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    align-items: end;
+    align-content: center;
+}

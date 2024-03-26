@@ -1,27 +1,26 @@
 <?php
 
-namespace Devinci\LaravelEssentials\Http\Controllers;
+namespace App\Http\Controllers;
 
 
 
-use Devinci\LaravelEssentials\Requests\RegistrationRequest;
-use Devinci\LaravelEssentials\Requests\LoginRequest;
-use Devinci\LaravelEssentials\Models\User;
-use Devinci\LaravelEssentials\Repositories\UserRepository;
+use App\Requests\RegistrationRequest;
+use App\Requests\LoginRequest;
+use App\Models\User;
+use App\Repositories\UserRepository;
 
 use Devinci\LaravelEssentials\EssentialServiceProvider;
 
-
-
 use Exception;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Artisan;
-use Devinci\LaravelEssentials\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 /**
  * Class UserAccessControl
@@ -34,6 +33,7 @@ use Devinci\LaravelEssentials\Http\Controllers\Controller;
  * - register.blade.php
  * - dashboard.blade.php
  */
+
 class UserAccessControl extends Controller
 {
     protected $userRepository;
@@ -59,18 +59,19 @@ class UserAccessControl extends Controller
             // Attempt to log in the user
             Auth::login($user);
             Session::put('username', $user->username);
-
-            return redirect()->route('home');
+            $username = session('username', '');
+            return redirect()->route('home')->with('username',$username);
         } catch (Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
+
     }
 
     /**
      * Handle user registration.
      *
      * @param RegistrationRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
 
     public function userRegistration(RegistrationRequest $request)
@@ -91,9 +92,10 @@ class UserAccessControl extends Controller
 
                 // Log in the user automatically
                 Auth::loginUsingId($userData['id']);
+                //store to var
 
                 // Redirect to the home page after successful registration and login
-                return redirect()->route('home')->with('success', 'Registration successful');
+                return redirect()->route('home')->with('success', 'Registration successful')->with('userName');
             } else {
                 // Registration failed, redirect back with error message
                 return redirect()->back()->with('error', $responseData['message']);
@@ -111,7 +113,8 @@ class UserAccessControl extends Controller
 
     public function renderLoginForm()
     {
-        return view('login');
+
+        return view('login')->with('username', session('username'));
     }
 
     public function renderRegistrationForm()

@@ -1,9 +1,9 @@
 <?php
 
-namespace Devinci\LaravelEssentials\Repositories;
+namespace App\Repositories;
 
 use Devinci\LaravelEssentials\EssentialServiceProvider;
-use Devinci\LaravelEssentials\Models\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class UserRepository extends BaseRepository
     /**
      * The model instance associated with the repository.
      *
-     * @var \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model User
+     * @var Builder|Model User
      */
     protected Builder|Model $model;
 
