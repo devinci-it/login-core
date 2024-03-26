@@ -10,7 +10,7 @@
  * @package  Devinci\LaravelEssentials\Repositories
  */
 
-namespace App\Repositories;
+namespace Devinci\LaravelEssentials\Repositories;
 
 use App\Http\Controllers\Controller;
 use Devinci\LaravelEssentials\EssentialServiceProvider;

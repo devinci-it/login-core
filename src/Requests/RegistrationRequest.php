@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Requests;
+namespace Devinci\LaravelEssentials\Requests;
 use Devinci\LaravelEssentials\EssentialServiceProvider;
 
 use Illuminate\Foundation\Http\FormRequest;

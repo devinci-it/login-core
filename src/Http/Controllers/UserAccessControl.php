@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Devinci\LaravelEssentials\Http\Controllers;
 
 
 

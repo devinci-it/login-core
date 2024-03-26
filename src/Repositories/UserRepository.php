@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace Devinci\LaravelEssentials\Repositories;
 
 use Devinci\LaravelEssentials\EssentialServiceProvider;
 use App\Models\User;
