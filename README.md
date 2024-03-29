@@ -1,18 +1,17 @@
+
 # Laravel Login Core
 
-The Laravel Login Core package (`devinci-it/login-core`) offers essential features for any Laravel application, including a standard login and registration system.
+Laravel Login Core is a Laravel package designed to streamline the integration of standard login and registration systems into Laravel applications. Whether you're a novice or an experienced developer, this package aims to simplify the setup process, allowing you to focus on building your application's core features.
 
 ## Installation
 
-To install the package, utilize Composer:
+To install the package, use Composer:
 
 ```bash
 composer require devinci-it/login-core
 ```
 
-## Usage
-
-After installing the package, employ the provided Artisan command to set up the login and registration system:
+Once installed, run the following Artisan command to set up the login and registration system:
 
 ```bash
 php artisan login:setup
@@ -22,22 +21,22 @@ This command will publish necessary files and load routes for the login and regi
 
 ## Features
 
-The package provides the following features:
+- Standard login and registration system.
+- Essential service providers for seamless integration.
+- Essential controllers: DashboardController and UserAccessControl.
+- Essential models: User.
+- Essential repositories: BaseRepository and UserRepository.
+- Essential requests: LoginRequest and RegistrationRequest.
+- Pre-built views for the login and registration system.
 
-- A standard login and registration system.
-- Essential service providers for your Laravel application.
-- Essential controllers: `DashboardController` and `UserAccessControl`.
-- Essential models: `User`.
-- Essential repositories: `BaseRepository` and `UserRepository`.
-- Essential requests: `LoginRequest` and `RegistrationRequest`.
-- Essential views for the login and registration system.
+## Usage
+
+After installation, integrate the login and registration system into your Laravel application as needed.
 
 ## Contributing
 
-Contributions are welcomed. Please open an issue or create a PR if you'd like to contribute.
-
-Note: When editing the README, adhere to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
+Contributions are welcome! If you have suggestions for improvements or would like to contribute code, please open an issue or create a pull request on our GitHub repository.
 
 ## License
 
-This project is licensed under the [MIT](http://opensource.org/licenses/MIT) license.
+This project is licensed under the MIT license.
