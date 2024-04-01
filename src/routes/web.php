@@ -16,30 +16,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Routes accessible to all users
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/home', [DashboardController::class, 'index'])->name('home');
 
 /*__________________________________________________*/
-/*                    USER AUTHENTICATION ROUTES     */
+/*                 AUTHENTICATION ROUTES             */
 /*__________________________________________________*/
-/* LOGIN VIEW AND FORM HANDLER*/
 
+// Routes accessible to non-authenticated users
 Route::middleware('guest')->group(function () {
     Route::get('/register', [UserAccessControl::class, 'renderRegistrationForm'])->name('register');
     Route::get('/login', [UserAccessControl::class, 'renderLoginForm'])->name('login');
+
+    // Route for submitting login and registration
+    Route::post('/login', [UserAccessControl::class, 'userLogin']);
+    Route::post('/register', [UserAccessControl::class, 'userRegistration']);
 });
 
-// Routes for submitting login and registration
-Route::post('/login', [UserAccessControl::class, 'userLogin']);
-Route::post('/register', [UserAccessControl::class, 'userRegistration']);
+// Routes accessible to authenticated users
+Route::middleware('auth')->group(function () {
+    // Route for logging out
+    Route::get('/logout', [UserAccessControl::class, 'userLogout']);
+    Route::post('/logout', [UserAccessControl::class, 'userLogout'])->name('logout');
 
-// Route for logging out
-Route::get('/logout', [UserAccessControl::class, 'userLogout']);
-Route::post('/logout', [UserAccessControl::class, 'userLogout'])->name('logout');
+    // Route for debugging users
+    Route::get('/debug_user', [UserAccessControl::class, 'debugUsers'])->name('debug');
+});
 
-// Route for debugging users
-Route::get('/debug_user', [UserAccessControl::class, 'debugUsers'])->name('debug');
-
+// Fallback route
 Route::fallback(function () {
     // Check if the user is authenticated
     if (Auth::check()) {
