@@ -19,6 +19,8 @@ php artisan login:setup
 
 This command will publish necessary files and load routes for the login and registration system.
 
+## Demo
+![registerscreenshot]('register.png')
 ## Features
 
 - Standard login and registration system.
