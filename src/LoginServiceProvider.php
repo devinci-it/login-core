@@ -1,23 +1,22 @@
 <?php
-    namespace Devinci\LaravelEssentials;
+    namespace Devinci\LoginCore;
 
-    use Devinci\LaravelEssentials\Http\Controllers\Controller;
-    use Devinci\LaravelEssentials\Utilities\FileManager;
-    use Devinci\LaravelEssentials\Commands\SetupLoginCommand;
-    use Devinci\LaravelEssentials\Http\Controllers\DashboardController;
-    use Devinci\LaravelEssentials\Http\Controllers\UserAccessControl;
-    use Devinci\LaravelEssentials\Migrations\CreateUserTable;
-    use Devinci\LaravelEssentials\Models\User;
-    use Devinci\LaravelEssentials\Repositories\BaseRepository;
-    use Devinci\LaravelEssentials\Repositories\UserRepository;
-    use Devinci\LaravelEssentials\Requests\LoginRequest;
-    use Devinci\LaravelEssentials\Requests\RegistrationRequest;
+    use Devinci\LaravelEssentials\Migrations;
+    use Devinci\LoginCore\Commands\SetupLoginCommand;
+    use Devinci\LoginCore\Http\Controllers\DashboardController;
+    use Devinci\LoginCore\Http\Controllers\UserAccessControl;
+    use Devinci\LoginCore\Models\User;
+    use Devinci\LoginCore\Repositories\BaseRepository;
+    use Devinci\LoginCore\Repositories\UserRepository;
+    use Devinci\LoginCore\Requests\LoginRequest;
+    use Devinci\LoginCore\Requests\RegistrationRequest;
+    use Devinci\LoginCore\Utilities\FileManager;
     use Exception;
     use Illuminate\Contracts\Foundation\Application;
-    use Illuminate\Support\ServiceProvider;
     use Illuminate\Support\Facades\File;
+    use Illuminate\Support\ServiceProvider;
 
-    class EssentialServiceProvider extends ServiceProvider
+    class LoginServiceProvider extends ServiceProvider
     {
     /**
      * Register services.
@@ -26,8 +25,8 @@
      */
     public function register()
     {
-        $this->app->singleton(EssentialServiceProvider::class, function (Application $app) {
-            return new EssentialServiceProvider($app);
+        $this->app->singleton(LoginServiceProvider::class, function (Application $app) {
+            return new LoginServiceProvider($app);
         });
 
     }

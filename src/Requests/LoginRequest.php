@@ -1,11 +1,9 @@
 <?php
 
-namespace Devinci\LaravelEssentials\Requests;
-use Devinci\LaravelEssentials\EssentialServiceProvider;
-
+namespace Devinci\LoginCore\Requests;
+use Devinci\LoginCore\LoginServiceProvider;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Artisan;
 
 /**
  * Class LoginRequest
@@ -45,9 +43,9 @@ class LoginRequest extends FormRequest
 {
     $sourcePath = __FILE__;
     $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Requests' . DIRECTORY_SEPARATOR . 'LoginRequest.php');
-    $oldNamespace = 'Devinci\LaravelEssentials\Requests';
+    $oldNamespace = 'Devinci\LoginCore\Requests';
     $newNamespace = 'App\Requests';
 
-    EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+    LoginServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
 }
 }

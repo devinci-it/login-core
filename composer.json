@@ -8,7 +8,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Devinci\\LaravelEssentials\\": "src/"
+      "Devinci\\LoginCore": "src/"
     }
   },
   "authors": [
@@ -20,7 +20,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Devinci\\LaravelEssentials\\EssentialServiceProvider"
+        "Devinci\\LoginCore\\LoginCoreServiceProvider"
       ]
     }
   }}

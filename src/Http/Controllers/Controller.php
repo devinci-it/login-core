@@ -1,6 +1,6 @@
 <?php
 
-namespace Devinci\LaravelEssentials\Http\Controllers;
+namespace Devinci\LoginCore\Http\Controllers;
 
 abstract class Controller
 {

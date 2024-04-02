@@ -1,8 +1,7 @@
 <?php
 
-use Devinci\LaravelEssentials\Http\Controllers\UserAccessControl;
-use Devinci\LaravelEssentials\Http\Controllers\DashboardController;
-
+use Devinci\LoginCore\Http\Controllers\DashboardController;
+use Devinci\LoginCore\Http\Controllers\UserAccessControl;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

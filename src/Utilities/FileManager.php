@@ -1,6 +1,6 @@
 <?php
 
-namespace Devinci\LaravelEssentials\Utilities;
+namespace Devinci\LoginCore\Utilities;
 
 /**
  * FileManager class provides utility methods for file management.

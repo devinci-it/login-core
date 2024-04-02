@@ -1,18 +1,10 @@
 <?php
 
-namespace Devinci\LaravelEssentials\Http\Controllers;
-
-use Devinci\LaravelEssentials\EssentialServiceProvider;
-
-
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Foundation\Application;
-use Illuminate\Contracts\View;
-use Illuminate\Support\Facades\Session;
+namespace Devinci\LoginCore\Http\Controllers;
+use Devinci\LoginCore\LoginServiceProvider;
 use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
+
 
 /**
  * Class DashboardController
@@ -55,7 +47,7 @@ class DashboardController
         $oldNamespace = 'Devinci\LaravelEssentials\Controllers';
         $newNamespace = 'App\Http\Controllers';
 
-        EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+        LoginServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
     }
 
 }

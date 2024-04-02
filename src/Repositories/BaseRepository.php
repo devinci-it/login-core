@@ -10,17 +10,16 @@
  * @package  Devinci\LaravelEssentials\Repositories
  */
 
-namespace Devinci\LaravelEssentials\Repositories;
+namespace Devinci\LoginCore\Repositories;
 
-use App\Http\Controllers\Controller;
-use Devinci\LaravelEssentials\EssentialServiceProvider;
+use Devinci\LoginCore\Http\Controllers\Controller;
+use Devinci\LoginCore\LoginServiceProvider;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class BaseRepository extends Controller
 {
@@ -115,6 +114,6 @@ class BaseRepository extends Controller
         $oldNamespace = 'Devinci\LaravelEssentials\Repositories';
         $newNamespace = 'App\Repositories';
 
-        EssentialServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
+        LoginServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
     }
 }
