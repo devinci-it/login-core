@@ -49,7 +49,7 @@ class SetupLoginCommand extends Command
         $loginServiceProvider = $this->laravel->make('Devinci\LoginCore\LoginServiceProvider');
         // Call the methods
         $loginServiceProvider->registerPublishing();
-        $loginServiceProvider->loadRoutes();
+//        $loginServiceProvider->loadRoutes();
         $loginServiceProvider->publishViews();
         $loginServiceProvider->publishCSS();
 

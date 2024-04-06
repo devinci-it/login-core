@@ -118,26 +118,13 @@
 
         }
     }
-    /**
-    * Load package routes.
-    *
-    * @return void
-    */
-    public function loadRoutes()
-    {
-    $sourcePath = __DIR__.'/routes/web.php';
-    $destinationPath = base_path('routes' . DIRECTORY_SEPARATOR . 'web.php');
-    $oldNamespace = 'Devinci\LaravelEssentials';
-    $newNamespace = 'App';
-
-    self::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-    }
 
     /**
     * Publish Blade views.
     *
     * @return void
     */
+    
         public function publishViews()
         {
             if ($this->app->runningInConsole()) {
