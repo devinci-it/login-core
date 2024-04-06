@@ -2,7 +2,9 @@
     namespace Devinci\LoginCore;
 
     use Devinci\LoginCore\Commands\SetupLoginCommand;
-    use  Devinci\LoginCore\Commands\PublishMigrationCommand;
+    use  Devinci\LoginCore\Commands\PublishLoginConfig;
+    use Devinci\LoginCore\Commands\PublishMigrationCommand;
+
     use Devinci\LoginCore\Http\Controllers\DashboardController;
     use Devinci\LoginCore\Http\Controllers\UserAccessControl;
     use Devinci\LoginCore\Models\User;
@@ -66,13 +68,15 @@
             $this->commands([
                 SetupLoginCommand::class,
                 PublishMigrationCommand::class,
+                PublishLoginConfig::class,
             ]);
         }
+        $this->publishes([
+            __DIR__ . '/../stubs/config.stub' => config_path('login.php'),
+        ], 'config');
 
-
-        #$this->displayInitializationInstructions();
-        #$this->displaySupportAndContributeInfo();
     }
+
 
         public function publishCSS()
         {
@@ -98,7 +102,7 @@
         if ($this->app->runningInConsole()) {
 
             // Publish Migrations
-            CreateUserTable::publish();
+
             User::publish();
             // Publish Repositories
             BaseRepository::publish();

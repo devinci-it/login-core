@@ -38,9 +38,6 @@ Route::middleware('auth')->group(function () {
     // Route for logging out
     Route::get('/logout', [UserAccessControl::class, 'userLogout']);
     Route::post('/logout', [UserAccessControl::class, 'userLogout'])->name('logout');
-
-    // Route for debugging users
-    Route::get('/debug_user', [UserAccessControl::class, 'debugUsers'])->name('debug');
 });
 
 // Fallback route

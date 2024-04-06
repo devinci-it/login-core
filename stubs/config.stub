@@ -1,0 +1,33 @@
+<?php
+
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Routes Accessible to Authenticated Users
+    |--------------------------------------------------------------------------
+    |
+    | Specify the routes that should be accessible only to authenticated users.
+    | Users of the package can customize this list according to their needs.
+    |
+    */
+    'authenticated_routes' => [
+        // Example routes accessible only to authenticated users
+        'dashboard',
+        'profile',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Routes Accessible to Guests
+    |--------------------------------------------------------------------------
+    |
+    | Specify the routes that should be accessible only to guest users.
+    | Users of the package can customize this list according to their needs.
+    |
+    */
+    'guest_routes' => [
+        // Example routes accessible only to guest users
+        'login',
+        'register',
+    ],
+];

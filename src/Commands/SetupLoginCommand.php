@@ -1,8 +1,9 @@
 <?php
 
 namespace Devinci\LoginCore\Commands;
-
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\Command;
+use Devinci\LoginCore\Commands\PublishLoginConfig;
 
 class SetupLoginCommand extends Command
 {
@@ -28,7 +29,9 @@ class SetupLoginCommand extends Command
     public function __construct()
     {
         parent::__construct();
+
     }
+
 
     /**
      * Execute the console command.
@@ -37,6 +40,11 @@ class SetupLoginCommand extends Command
      */
     public function handle()
     {
+        Artisan::call('vendor:publish', [
+            '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
+            '--tag' => 'config',
+        ]);
+
         // Get an instance of the LoginServiceProvider
         $loginServiceProvider = $this->laravel->make('Devinci\LoginCore\LoginServiceProvider');
         // Call the methods
