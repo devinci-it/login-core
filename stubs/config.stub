@@ -1,6 +1,9 @@
 <?php
 
 return [
+
+    // TO ENABLE THE ROUTES IMPORT `Devinci\LoginCore\Routes\RouteRegistrar` and call `::registerRoutes()`
+
     /*
     |--------------------------------------------------------------------------
     | Routes Accessible to Authenticated Users

@@ -12,8 +12,8 @@ class RouteRegistrar
 {
     public static function registerRoutes()
     {
-        $authenticatedRoutes = config('devinci-login.authenticated_routes');
-        $guestRoutes = config('devinci-login.guest_routes');
+        $authenticatedRoutes = config('login.authenticated_routes');
+        $guestRoutes = config('login.guest_routes');
 
         // Routes accessible to all users
         Route::get('/', [DashboardController::class, 'index']);
