@@ -44,14 +44,24 @@ class SetupLoginCommand extends Command
             '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
             '--tag' => 'config',
         ]);
+        $this->info('Devinci LoginCore config published successfully!');
 
-        // Get an instance of the LoginServiceProvider
+        Artisan::call('vendor:publish', [
+            '--provider' => 'Devinci\LoginCore\LoginCoreServiceProvider',
+            '--tag' => 'views',
+        ]);
+
+        $this->info('Devinci LoginCore views published successfully!');
+        $this->info('If resources were not properly published , execute `php artisan vendor:publish --tag=views`');
+
+        Artisan::call('vendor:publish', [
+            '--provider' => 'Devinci\LoginCore\LoginCoreServiceProvider',
+            '--tag' => 'resources',
+        ]);
+
         $loginServiceProvider = $this->laravel->make('Devinci\LoginCore\LoginServiceProvider');
-        // Call the methods
-        $loginServiceProvider->registerPublishing();
-//        $loginServiceProvider->loadRoutes();
-        $loginServiceProvider->publishViews();
-        $loginServiceProvider->publishCSS();
+//        $loginServiceProvider->registerPublishing();
+
 
         return 0;
     }

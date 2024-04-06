@@ -71,9 +71,19 @@
                 PublishLoginConfig::class,
             ]);
         }
+
         $this->publishes([
             __DIR__ . '/../stubs/config.stub' => config_path('login.php'),
         ], 'config');
+
+        $this->publishes([
+            __DIR__.'/resources/views' => resource_path('views/'),
+        ], 'views');
+
+        $this->publishes([
+            __DIR__.'/resources/css' => public_path('css/'),
+        ], 'css');
+
 
     }
 
@@ -103,18 +113,18 @@
 
             // Publish Migrations
 
-            User::publish();
-            // Publish Repositories
-            BaseRepository::publish();
-            UserRepository::publish();
+//            User::publish();
+//            // Publish Repositories
+//            BaseRepository::publish();
+//            UserRepository::publish();
 
             // Publish Controllers
-            UserAccessControl::publish();
-            DashboardController::publish();
-
-            // Publish Requests
-            RegistrationRequest::publish();
-            LoginRequest::publish();
+//            UserAccessControl::publish();
+//            DashboardController::publish();
+//
+//            // Publish Requests
+//            RegistrationRequest::publish();
+//            LoginRequest::publish();
 
         }
     }
@@ -124,7 +134,7 @@
     *
     * @return void
     */
-    
+
         public function publishViews()
         {
             if ($this->app->runningInConsole()) {
