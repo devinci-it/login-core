@@ -2,7 +2,6 @@
 
 namespace Devinci\LoginCore\Models;
 
-use Devinci\LoginCore\LoginServiceProvider;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -59,19 +58,4 @@ class User extends Authenticatable
             $user->account_status = 'unverified';
         });
     }
-
-    /**
-     * Publish the model file to Laravel base path for Models.
-     *
-     * @return void
-     */
-public static function publish()
-{
-    $sourcePath = __FILE__;
-    $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Models' . DIRECTORY_SEPARATOR . 'User.php');
-    $oldNamespace = 'Devinci\LaravelEssentials\Models';
-    $newNamespace = 'App\Models';
-
-    LoginServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-}
 }

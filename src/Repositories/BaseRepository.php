@@ -13,7 +13,6 @@
 namespace Devinci\LoginCore\Repositories;
 
 use Devinci\LoginCore\Http\Controllers\Controller;
-use Devinci\LoginCore\LoginServiceProvider;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
@@ -102,18 +101,4 @@ class BaseRepository extends Controller
         return response()->json(['message' => 'Resource successfully deleted'], 200);
     }
 
-    /**
-     * Publish the repository file to Laravel base path for Repositories.
-     *
-     * @return void
-     */
-    public static function publish()
-    {
-        $sourcePath = __FILE__;
-        $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Repositories' . DIRECTORY_SEPARATOR . 'BaseRepository.php');
-        $oldNamespace = 'Devinci\LaravelEssentials\Repositories';
-        $newNamespace = 'App\Repositories';
-
-        LoginServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-    }
 }

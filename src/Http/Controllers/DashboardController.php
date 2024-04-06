@@ -1,7 +1,6 @@
 <?php
 
 namespace Devinci\LoginCore\Http\Controllers;
-use Devinci\LoginCore\LoginServiceProvider;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,20 +33,6 @@ class DashboardController
 
         return view('home')->with('username', $userName);
     }
-
-    /**
-     * Publish the controller file to Laravel base path for Controllers.
-     *
-     * @return void
-     */
-    public static function publish()
-    {
-        $sourcePath = __FILE__;
-        $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'DashboardController.php');
-        $oldNamespace = 'Devinci\LaravelEssentials\Controllers';
-        $newNamespace = 'App\Http\Controllers';
-
-        LoginServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-    }
+    
 
 }

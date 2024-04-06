@@ -2,7 +2,6 @@
 
 namespace Devinci\LoginCore\Http\Controllers;
 
-use Devinci\LoginCore\LoginServiceProvider;
 use Devinci\LoginCore\Models\User;
 use Devinci\LoginCore\Repositories\UserRepository;
 use Devinci\LoginCore\Requests\LoginRequest;
@@ -118,24 +117,5 @@ class UserAccessControl extends Controller
     }
 
 
-    public function debugUsers()
-    {
-        $userRepo = new UserRepository();
-        return $userRepo->testRepo();
-    }
 
-    /**
-     * Publish the controller file to Laravel base path for Controllers.
-     *
-     * @return void
-     */
-public static function publish()
-{
-    $sourcePath = __FILE__;
-    $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Http' . DIRECTORY_SEPARATOR . 'Controllers' . DIRECTORY_SEPARATOR . 'UserAccessControl.php');
-    $oldNamespace = 'Devinci\\LaravelEssentials\\Controllers';
-    $newNamespace = 'App\\Http\\Controllers';
-
-    LoginServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-}
 }

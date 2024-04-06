@@ -2,7 +2,6 @@
 namespace Devinci\LoginCore\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 
 class PublishLoginConfig extends Command
 {

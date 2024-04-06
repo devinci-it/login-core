@@ -2,7 +2,6 @@
 
 namespace Devinci\LoginCore\Repositories;
 
-use Devinci\LoginCore\LoginServiceProvider;
 use Devinci\LoginCore\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -77,18 +76,5 @@ class UserRepository extends BaseRepository
         return response()->json($response);
     }
 
-    /**
-     * Publish the repository file to Laravel base path for Repositories.
-     *
-     * @return void
-     */
-    public static function publish()
-    {
-        $sourcePath = __FILE__;
-        $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Repositories' . DIRECTORY_SEPARATOR . 'UserRepository.php');
-        $oldNamespace = 'Devinci\LaravelEssentials\Repositories';
-        $newNamespace = 'App\Repositories';
 
-        LoginServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-    }
 }

@@ -1,7 +1,6 @@
 <?php
 
 namespace Devinci\LoginCore\Requests;
-use Devinci\LoginCore\LoginServiceProvider;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -34,18 +33,4 @@ class RegistrationRequest extends FormRequest
         ];
     }
 
-    /**
-     * Publish the request file to Laravel base path for Requests.
-     *
-     * @return void
-     */
-public static function publish()
-{
-    $sourcePath = __FILE__;
-    $destinationPath = base_path('app' . DIRECTORY_SEPARATOR . 'Requests' . DIRECTORY_SEPARATOR . 'RegistrationRequest.php');
-    $oldNamespace = 'Devinci\LoginCore\Requests';
-    $newNamespace = 'App\Requests';
-
-    LoginServiceProvider::publishAndRefactor($sourcePath, $destinationPath, $oldNamespace, $newNamespace);
-}
 }

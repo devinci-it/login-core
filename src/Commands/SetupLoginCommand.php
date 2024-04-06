@@ -1,9 +1,8 @@
 <?php
 
 namespace Devinci\LoginCore\Commands;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Console\Command;
-use Devinci\LoginCore\Commands\PublishLoginConfig;
+use Illuminate\Support\Facades\Artisan;
 
 class SetupLoginCommand extends Command
 {
@@ -58,10 +57,6 @@ class SetupLoginCommand extends Command
             '--provider' => 'Devinci\LoginCore\LoginCoreServiceProvider',
             '--tag' => 'resources',
         ]);
-
-        $loginServiceProvider = $this->laravel->make('Devinci\LoginCore\LoginServiceProvider');
-//        $loginServiceProvider->registerPublishing();
-
 
         return 0;
     }
