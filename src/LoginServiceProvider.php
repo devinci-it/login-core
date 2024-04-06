@@ -1,8 +1,8 @@
 <?php
     namespace Devinci\LoginCore;
 
-    use Devinci\LaravelEssentials\Migrations;
     use Devinci\LoginCore\Commands\SetupLoginCommand;
+    use  Devinci\LoginCore\Commands\PublishMigrationCommand;
     use Devinci\LoginCore\Http\Controllers\DashboardController;
     use Devinci\LoginCore\Http\Controllers\UserAccessControl;
     use Devinci\LoginCore\Models\User;
@@ -65,8 +65,10 @@
         if ($this->app->runningInConsole()) {
             $this->commands([
                 SetupLoginCommand::class,
+                PublishMigrationCommand::class,
             ]);
         }
+
 
         #$this->displayInitializationInstructions();
         #$this->displaySupportAndContributeInfo();

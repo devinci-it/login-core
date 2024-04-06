@@ -38,8 +38,7 @@ class SetupLoginCommand extends Command
     public function handle()
     {
         // Get an instance of the LoginServiceProvider
-        $loginServiceProvider = $this->laravel->make('Devinci\LaravelEssentials\LoginServiceProvider');
-
+        $loginServiceProvider = $this->laravel->make('Devinci\LoginCore\LoginServiceProvider');
         // Call the methods
         $loginServiceProvider->registerPublishing();
         $loginServiceProvider->loadRoutes();
