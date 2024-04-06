@@ -3,6 +3,8 @@
 namespace Devinci\LoginCore\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Devinci\LoginCore\Commands\PublishMigrationCommand;
+use Devinci\LoginCore\Commands\PublishLoginConfig;
 
 class SetupLoginCommand extends Command
 {
@@ -43,20 +45,30 @@ class SetupLoginCommand extends Command
             '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
             '--tag' => 'config',
         ]);
-        $this->info('Devinci LoginCore config published successfully!');
+        $this->line('Devinci LoginCore config published successfully!');
 
         Artisan::call('vendor:publish', [
             '--provider' => 'Devinci\LoginCore\LoginCoreServiceProvider',
             '--tag' => 'views',
         ]);
 
-        $this->info('Devinci LoginCore views published successfully!');
-        $this->info('If resources were not properly published , execute `php artisan vendor:publish --tag=views`');
+        $this->line('Devinci LoginCore views published successfully!');
+        $this->line('If resources were not properly published , execute `php artisan vendor:publish --tag=views`');
 
         Artisan::call('vendor:publish', [
             '--provider' => 'Devinci\LoginCore\LoginCoreServiceProvider',
             '--tag' => 'resources',
         ]);
+
+        $publishMigrationCommand = new PublishMigrationCommand();
+        $publishMigrationCommand->handle();
+
+        // Call the handle method of PublishLoginConfig
+        $publishLoginConfig = new PublishLoginConfig();
+        $publishLoginConfig->handle();
+
+
+
 
         return 0;
     }

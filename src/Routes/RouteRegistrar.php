@@ -24,6 +24,7 @@ class RouteRegistrar
             foreach ($guestRoutes as $route) {
                 Route::get("/$route", [UserAccessControl::class, "render{$route}Form"])->name($route);
             }
+            Route::get('/register',[UserAccessControl::class,'renderRegistrationForm']);
             Route::post('/login', [UserAccessControl::class, 'userLogin']);
             Route::post('/register', [UserAccessControl::class, 'userRegistration']);
         });
@@ -33,6 +34,7 @@ class RouteRegistrar
             foreach ($authenticatedRoutes as $route) {
                 Route::get("/$route", [DashboardController::class, 'render{$route}'])->name($route);
             }
+            Route::get('/dashboard',[DashboardController::class,'index']);
             Route::get('/logout', [UserAccessControl::class, 'userLogout']);
             Route::post('/logout', [UserAccessControl::class, 'userLogout'])->name('logout');
         });

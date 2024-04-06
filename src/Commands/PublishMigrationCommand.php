@@ -35,10 +35,9 @@ class PublishMigrationCommand extends Command
 
         if (!File::exists($destinationPath)) {
             File::copy($stubPath, $destinationPath);
-            $this->info("Devinci/LoginCore: $destinationPath.\nMigration File Published.");
-            $this->info("To apply the migration, run: php artisan migrate");
+
         } else {
-            $this->error('Migration already exists!');
+
         }
 
         return 0;
