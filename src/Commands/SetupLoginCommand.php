@@ -41,39 +41,42 @@ class SetupLoginCommand extends Command
      */
     public function handle()
     {
+        $this->info('Publishing Devinci LoginCore config...');
         Artisan::call('vendor:publish', [
             '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
             '--tag' => 'config',
         ]);
-        $this->line('Devinci LoginCore config published successfully!');
+        $this->info('Devinci LoginCore config published successfully!');
 
+        $this->info('Publishing Devinci LoginCore views...');
         Artisan::call('vendor:publish', [
             '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
             '--tag' => 'views',
         ]);
+        $this->info('Devinci LoginCore views published successfully!');
+        $this->info('If resources were not properly published , execute `php artisan vendor:publish --tag=views`');
 
-        $this->line('Devinci LoginCore views published successfully!');
-        $this->line('If resources were not properly published , execute `php artisan vendor:publish --tag=views`');
-
+        $this->info('Publishing Devinci LoginCore resources...');
         Artisan::call('vendor:publish', [
             '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
             '--tag' => 'resources',
         ]);
-        
+
+        $this->info('Publishing Devinci LoginCore CSS...');
         Artisan::call('vendor:publish', [
             '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
             '--tag' => 'css',
         ]);
 
+        $this->info('Running PublishMigrationCommand...');
         $publishMigrationCommand = new PublishMigrationCommand();
         $publishMigrationCommand->handle();
 
-        // Call the handle method of PublishLoginConfig
+        $this->info('Running PublishLoginConfig...');
         $publishLoginConfig = new PublishLoginConfig();
         $publishLoginConfig->handle();
 
-
-
+        $this->info('SetupLoginCommand completed successfully.');
 
         return 0;
     }
