@@ -41,20 +41,20 @@ class SetupLoginCommand extends Command
      */
     public function handle()
     {
-        $this->info('Publishing Devinci LoginCore config...');
+        $this->info('[SUCCESS] Publishing Devinci LoginCore config...');
         Artisan::call('vendor:publish', [
             '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
             '--tag' => 'config',
         ]);
-        $this->info('Devinci LoginCore config published successfully!');
+        $this->info('[SUCCESS] Devinci LoginCore config published successfully!');
 
-        $this->info('Publishing Devinci LoginCore views...');
+        $this->info('[SUCCESS] Publishing Devinci LoginCore views...');
         Artisan::call('vendor:publish', [
             '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
             '--tag' => 'views',
         ]);
-        $this->info('Devinci LoginCore views published successfully!');
-        $this->info('If resources were not properly published , execute `php artisan vendor:publish --tag=views`');
+        $this->info('[SUCCESS] Devinci LoginCore views published successfully!');
+        $this->info('[SUCCESS] If resources were not properly published , execute `php artisan vendor:publish --tag=views`');
 
         $this->info('Publishing Devinci LoginCore resources...');
         Artisan::call('vendor:publish', [
@@ -68,15 +68,15 @@ class SetupLoginCommand extends Command
             '--tag' => 'css',
         ]);
 
-        $this->info('Running PublishMigrationCommand...');
+        $this->info('[SUCCESS] Running PublishMigrationCommand...');
         $publishMigrationCommand = new PublishMigrationCommand();
         $publishMigrationCommand->handle();
 
-        $this->info('Running PublishLoginConfig...');
+        $this->info('[SUCCESS] Running PublishLoginConfig');
         $publishLoginConfig = new PublishLoginConfig();
         $publishLoginConfig->handle();
 
-        $this->info('SetupLoginCommand completed successfully.');
+        $this->info('[SUCCESS] SetupLoginCommand completed successfully.');
 
         return 0;
     }
