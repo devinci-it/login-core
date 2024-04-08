@@ -1,6 +1,7 @@
 <?php
 
 namespace Devinci\LoginCore\Utilities;
+use Illuminate\View\FileViewFinder;
 
 /**
  * FileManager class provides utility methods for file management.

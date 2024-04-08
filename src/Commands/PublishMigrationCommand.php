@@ -28,16 +28,12 @@ class PublishMigrationCommand extends Command
      */
     public function handle()
     {
-
         // Constructing the path to the stub file within the library using __DIR__
         $stubPath = __DIR__ . "/../../stubs/modify_user.stub";
         $destinationPath = database_path('migrations/' . date('Y_m_d_His') . '_modify_user_table.php');
 
         if (!File::exists($destinationPath)) {
             File::copy($stubPath, $destinationPath);
-
-        } else {
-
         }
 
         return 0;
