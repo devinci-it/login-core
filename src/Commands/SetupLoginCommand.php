@@ -48,7 +48,7 @@ class SetupLoginCommand extends Command
         $this->line('Devinci LoginCore config published successfully!');
 
         Artisan::call('vendor:publish', [
-            '--provider' => 'Devinci\LoginCore\LoginCoreServiceProvider',
+            '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
             '--tag' => 'views',
         ]);
 
@@ -56,7 +56,7 @@ class SetupLoginCommand extends Command
         $this->line('If resources were not properly published , execute `php artisan vendor:publish --tag=views`');
 
         Artisan::call('vendor:publish', [
-            '--provider' => 'Devinci\LoginCore\LoginCoreServiceProvider',
+            '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
             '--tag' => 'resources',
         ]);
 
