@@ -59,6 +59,11 @@ class SetupLoginCommand extends Command
             '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
             '--tag' => 'resources',
         ]);
+        
+        Artisan::call('vendor:publish', [
+            '--provider' => 'Devinci\LoginCore\LoginServiceProvider',
+            '--tag' => 'css',
+        ]);
 
         $publishMigrationCommand = new PublishMigrationCommand();
         $publishMigrationCommand->handle();
