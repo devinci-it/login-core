@@ -34,29 +34,31 @@ class UserAccessControl extends Controller
         $this->userRepository = $userRepository;
     }
 
-    public function userLogin(LoginRequest $request)
-    {
-        try {
-            $credentials = $request->only('username', 'password');
+   public function userLogin(LoginRequest $request)
+{
+    try {
+        $credentials = $request->only('username', 'password');
 
-            // Retrieve the user by the username
-            $user = User::where('username', $credentials['username'])->first();
+        // Retrieve the user by the username
+        $user = User::where('username', $credentials['username'])->first();
 
-            // Check if the user exists and the password is correct
-            if (!$user || !Hash::check($credentials['password'], $user->password)) {
-                throw new Exception('Invalid login credentials');
-            }
-
-            // Attempt to log in the user
-            Auth::login($user);
-            Session::put('username', $user->username);
-            $username = session('username', '');
-            return redirect()->route('home')->with('username',$username);
-        } catch (Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+        // Check if the user exists and the password is correct
+        if (!$user || !Hash::check($credentials['password'], $user->password)) {
+            throw new Exception('Invalid login credentials');
         }
 
+        // Attempt to log in the user
+        Auth::login($user);
+        Session::put('username', $user->username);
+        $username = session('username', '');
+
+        // Redirect to the configured route after successful login
+        $redirectRoute = config('login.login_redirect_route', 'home');
+        return redirect()->route($redirectRoute)->with('username',$username);
+    } catch (Exception $e) {
+        return redirect()->back()->with('error', $e->getMessage());
     }
+}
 
     /**
      * Handle user registration.

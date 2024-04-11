@@ -33,4 +33,17 @@ return [
         'login',
         'register',
     ],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Successful Login Redirect Route
+    |--------------------------------------------------------------------------
+    |
+    | Specify the route to which the user should be redirected after a successful login.
+    | Users of the package can customize this according to their needs.
+    |
+    */
+    'login_redirect_route' => 'dashboard',
+
 ];
